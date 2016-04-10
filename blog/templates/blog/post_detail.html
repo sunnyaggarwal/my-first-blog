@@ -1,0 +1,33 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+	<div class="post">
+		<div class="title">
+			<h1>{{ post.title }}</h1>
+		</div>
+
+		<h3> Description </h3>
+		<pre>{{ post.content }}</pre>
+
+		<h3> Time Complexity </h3>
+		<div class="complexity">
+			<p>{{ post.time_complexity }}</p>
+		</div>
+
+		<h3> Space Complexity </h3>
+		<div class="complexity">
+			<p>{{ post.space_complexity }}</p>
+		</div>
+
+		<h3>Published Date </h3>	
+		<div class="date">	
+			<p> {{ post.published_date }}</p>
+		</div>
+
+		<h3> Author </h3>
+		<div class="author">
+			<p>{{ post.author }}</p>
+		</div>
+
+	</div>
+{% endblock %}

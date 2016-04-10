@@ -1,57 +1,11 @@
-{% load staticfiles %}
-<html>
-    <head>
-    	<title>Ma5termind's blog</title>
-    	<link href="http://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+{% extends 'blog/base.html' %}
 
-    	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-		
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-   
-    	<link rel="stylesheet" href="{% static 'css/blog.css' %}">
-    </head>
-    <body>
-        <div class = "page-header">
-            <u><h1><a href="">Ma5termind's blog</a></h1></u>
-        </div>
-        
-        <!-- <h2><a href="">starting your own blog</a></h2> -->
-        <div class="content container">
-    		<div class="row">
-        		<div class="col-md-8">
-	        		{% for post in posts %}
-	        			<div class="post">
-	        				<div class="title">
-	        					<h1><a href="">{{ post.title }}</a></h1>
-	        				</div>
-
-	        				<h3> Description </h3>
-	        				<pre>{{ post.content }}</pre>
-	        	
-	        				<h3> Time Complexity </h3>
-	        				<div class="complexity">
-	        					<p>{{ post.time_complexity }}</p>
-	        				</div>
-
-	        				<h3> Space Complexity </h3>
-	        				<div class="complexity">
-	        					<p>{{ post.space_complexity }}</p>
-	        				</div>
-
-	        				<h3>Published Date </h3>	
-	        				<div class="date">	
-	        					<p> {{ post.published_date }}</p>
-	        				</div>
-
-	        				<h3> Author </h3>
-	        				<div class="author">
-	        					<p>{{ post.author }}</p>
-	        				</div>
-	        
-	        			</div>
-	        		{% endfor %}
-    			</div>
-    		</div>
-    	</div>
-    </body>
-</html>
+{% block content %}	
+	{% for post in posts %}
+		<div class="post">
+			<div class="title">
+				<h1><a href="{% url 'post_detail' title=post.title pk=post.pk %}">{{ post.title }}</a></h1>
+			</div>
+		</div>
+	{% endfor %}
+{% endblock %}
